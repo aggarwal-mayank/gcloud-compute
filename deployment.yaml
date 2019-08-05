@@ -1,0 +1,37 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: compute-deployment
+  labels:
+    app: compute-app
+    type: back-end
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: compute-app
+  template:
+    metadata:
+      name: compute-pod
+      labels:
+        app: compute-app
+        type: back-end
+    spec:
+      volumes:
+        - name: comp-sa-creds
+          secret:
+            secretName: comp-sa-creds
+      containers:
+        - name: my-compute
+          image: aggarwalmayank/compute-image:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: GOOGLE_APPLICATION_CREDENTIALS
+              value: /secrets/sa/key.json
+          volumeMounts:
+            - name: comp-sa-creds
+              mountPath: /secrets/sa
+              readOnly: true
+
+
