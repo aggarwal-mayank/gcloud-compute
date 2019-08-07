@@ -7,19 +7,11 @@ import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.services.compute.Compute;
 import com.google.api.services.compute.ComputeScopes;
-import com.google.api.services.compute.model.AccessConfig;
-import com.google.api.services.compute.model.AttachedDisk;
-import com.google.api.services.compute.model.AttachedDiskInitializeParams;
 import com.google.api.services.compute.model.Instance;
 import com.google.api.services.compute.model.InstanceList;
-import com.google.api.services.compute.model.Metadata;
-import com.google.api.services.compute.model.NetworkInterface;
-import com.google.api.services.compute.model.Operation;
-import com.google.api.services.compute.model.ServiceAccount;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class ComputeInstances {
